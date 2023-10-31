@@ -1,0 +1,12 @@
+name: hic-env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - trim-galore
+  - samtools
+  - bowtie2
+  - hicup
+  - multiqc
+

@@ -31,11 +31,11 @@ This workflow runs the following steps:
 // Script parameters
 
 // env params
-params.dir = "/Users/rdali/Downloads/AWS_omics/"
+params.dir = "."
 
 // tool paths
-params.bowtie_path = "/opt/homebrew/bin/bowtie2"
-params.r_path = "/opt/homebrew/bin/R"
+params.bowtie_path = "~/tools/bowtie2-2.5.2-sra-linux-x86_64/bowtie2"
+params.r_path = "/usr/bin/R"
 params.juicer_path = "~/tools/juicer_tools_1.22.01.jar"
 
 // genome params

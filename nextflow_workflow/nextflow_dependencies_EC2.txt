@@ -24,4 +24,8 @@ bash Anaconda3-2023.09-0-Linux-x86_64.sh
 
 
 ## Add tools to PATH:
-echo "export PATH=${PATH}:~/tools:~/tools/anaconda3/condabin/" >> ~/.bashrc
+echo "export PATH=${PATH}:~/tools:~/anaconda3/bin/" >> ~/.bashrc
+
+
+## source ~/.bashrc
+source ~/.bashrc

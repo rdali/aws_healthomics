@@ -1,0 +1,27 @@
+## This is a user script for an EC2 Linux instance to set up library dependencies to run the nextflow workflow:
+## This is writen by LogicWorks & tested Nov 2023
+## Versions might change, but the process is unlikly to change
+## tested on Amazon Linux 2023 AMI 2023.2.2 on EC2 t2.xlarge
+
+
+
+## Amazon Linux EC2:
+
+
+## create a tools folder:
+mkdir -p ~/tools/conda3
+cd ~/tools
+
+## install java: OpenJDK Runtime Environment Corretto-11.0.21.9.1 (build 11.0.21+9-LTS)
+sudo yum -y install java-11-amazon-corretto
+
+## install Nextflow
+curl -s https://get.nextflow.io | bash
+
+## install conda:
+wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
+bash Anaconda3-2023.09-0-Linux-x86_64.sh
+
+
+## Add tools to PATH:
+echo "export PATH=${PATH}:~/tools:~/tools/anaconda3/condabin/" >> ~/.bashrc

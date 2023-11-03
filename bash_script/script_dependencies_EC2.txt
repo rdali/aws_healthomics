@@ -72,11 +72,4 @@ wget https://s3.amazonaws.com/hicfiles.tc4ga.com/public/juicer/juicer_tools_1.22
 sudo yum -y install R
 # gets intalled in /usr/bin/R
 
-## clone hic repo:
-
-
-## unzip hic fastq reads:
-
-tar -zxvf SRR1658570_reads.tar.gz
-
 

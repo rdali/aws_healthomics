@@ -22,9 +22,9 @@
 
 ## Set Variables:
 dir=`pwd`
-id=SRR1658570_10Msample
-bowtie_path=/opt/homebrew/bin/bowtie2
-R_path=/opt/homebrew/bin/R
+id=SRR1658570_1Msample
+bowtie_path=~/tools/bowtie2-2.5.2-sra-linux-x86_64/bowtie2
+R_path=/usr/bin/R
 juicer_path=~/tools/juicer_tools_1.22.01.jar
 
 

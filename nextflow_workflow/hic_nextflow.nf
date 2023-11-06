@@ -34,7 +34,7 @@ This workflow runs the following steps:
 params.dir = "."
 
 // tool paths
-params.bowtie_path = "/tools/bowtie2-2.5.2-sra-linux-x86_64/bowtie2"
+params.bowtie_path = "~/tools/bowtie2-2.5.2-sra-linux-x86_64/bowtie2"
 params.r_path = "/usr/bin/R"
 params.juicer_path = "~/tools/juicer_tools_1.22.01.jar"
 

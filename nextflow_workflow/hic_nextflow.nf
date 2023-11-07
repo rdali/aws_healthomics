@@ -99,12 +99,8 @@ process INDEX_GENOME {
    file genome
 
    output:
-   path "${params.genome}.1.bt2", emit: genomeIndex1
-   path "${params.genome}.2.bt2", emit: genomeIndex2
-   path "${params.genome}.3.bt2", emit: genomeIndex3
-   path "${params.genome}.4.bt2", emit: genomeIndex4
-   path "${params.genome}.rev.1.bt2", emit: genomeIndex_outrev1
-   path "${params.genome}.rev.2.bt2", emit: genomeIndex_outrev2
+   path "${params.genome}.1.bt2", emit: genomeIndex
+   path "*"
 
 
    script:

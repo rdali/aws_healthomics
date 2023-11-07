@@ -63,7 +63,7 @@ params.trimR2 = "${params.id}_2_val_2.fq.gz"
 params.sortedBam = "${params.id}.sorted.bam"
 
 // CREATE_HICFILE
-params.create_hic_script = "${params.dir}/scripts/createHiCfile.sh"
+params.create_hic_script = "${params.dir}/utils/createHiCfile.sh"
 params.hicfile = "${params.id}.hic"
 
 // MULTIQC

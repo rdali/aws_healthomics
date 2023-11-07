@@ -81,7 +81,7 @@ samtools sort -n bams/${id}_1_val_1.${id}_2_val_2.hicup.bam -o bams/${id}.sorted
 
 ## 7- Create .hicfile:
 echo "... ... ... Creating .hicFile ... ... ..."
-scripts/createHiCfile.sh -b bams/${id}.sorted.bam -n ${id} -s -g hg38 -j ${juicer_path}
+utils/createHiCfile.sh -b bams/${id}.sorted.bam -n ${id} -s -g hg38 -j ${juicer_path}
 ## you can visualize .hic file on https://aidenlab.org/juicebox/
 
 

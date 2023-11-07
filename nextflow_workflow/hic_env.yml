@@ -1,8 +1,8 @@
 name: hic-env
 channels:
-  - defaults
+  - conda-forge
   - bioconda
-  - conda-forge  
+  - defaults
 dependencies:
   - trim-galore
   - samtools

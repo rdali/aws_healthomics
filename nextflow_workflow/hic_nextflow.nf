@@ -99,13 +99,7 @@ process INDEX_GENOME {
    file genome
 
    output:
-   path "${params.genome}.1.bt2", emit: genomeIndex1
-   path "${params.genome}.2.bt2", emit: genomeIndex2
-   path "${params.genome}.3.bt2", emit: genomeIndex3
-   path "${params.genome}.4.bt2", emit: genomeIndex4
-   path "${params.genome}.rev.1.bt2", emit: genomeIndex5
-   path "${params.genome}.rev.2.bt2", emit: genomeIndex6
-
+   path "${params.genome}.*.bt2", emit: genomeIndex
 
    script:
    """
@@ -165,12 +159,7 @@ process HICUP_ALIGN {
    path fq1
    path fq2
    path genomeDigest
-   path genomeIndex1
-   path genomeIndex2
-   path genomeIndex3
-   path genomeIndex4
-   path genomeIndex5
-   path genomeIndex6
+   path genomeIndex
 
   output:
    path "${params.id}_1_val_1.${params.id}_2_val_2.hicup.bam", emit: bam
@@ -186,8 +175,8 @@ process HICUP_ALIGN {
    Zip:1
    Bowtie2: ${params.bowtie_path}
    R: ${params.r_path}
-   Index: ${params.index}
-   Digest: ${params.digestPath}
+   Index: ${params.genome}
+   Digest: ${params.digestfile}
    Format: Sanger
    Longest: 800
    Shortest: 0
@@ -241,6 +230,7 @@ process MULTIQC {
 
    input:
    path '*'
+   path logs_ch
 
    output:
    path 'multiqc_report.html'
@@ -259,6 +249,7 @@ process MULTIQC {
 
 read_pairs_ch = Channel.fromFilePairs(params.readsFa, checkIfExists: true)
 hic_file_ch = Channel.fromPath(params.create_hic_script, checkIfExists: true)
+logs_ch = Channel.fromPath(params.logPath, checkIfExists: true)
 
 /*
 ========================================================================================
@@ -283,10 +274,10 @@ workflow {
    INDEX_GENOME(GET_GENOME.out.genomeFa)
    DIGEST_GENOME(GET_GENOME.out.genomeFa)
 	TRIM_READS(read_pairs_ch)
-   HICUP_ALIGN(TRIM_READS.out.fq1, TRIM_READS.out.fq2, DIGEST_GENOME.out.genomeDigest, INDEX_GENOME.out.genomeIndex1, INDEX_GENOME.out.genomeIndex2, INDEX_GENOME.out.genomeIndex3, INDEX_GENOME.out.genomeIndex4, INDEX_GENOME.out.genomeIndex5, INDEX_GENOME.out.genomeIndex6)
+   HICUP_ALIGN(TRIM_READS.out.fq1, TRIM_READS.out.fq2, DIGEST_GENOME.out.genomeDigest, INDEX_GENOME.out.genomeIndex)
    BAM_SORT(HICUP_ALIGN.out.bam)
    CREATE_HICFILE(BAM_SORT.out.bamSorted, hic_file_ch)
-   MULTIQC(HICUP_ALIGN.out.bam)
+   MULTIQC(HICUP_ALIGN.out.bam, logs_ch)
 }
 
 

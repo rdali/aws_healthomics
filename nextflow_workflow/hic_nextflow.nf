@@ -283,7 +283,7 @@ workflow {
    INDEX_GENOME(GET_GENOME.out.genomeFa)
    DIGEST_GENOME(GET_GENOME.out.genomeFa)
 	TRIM_READS(read_pairs_ch)
-   HICUP_ALIGN(TRIM_READS.out.fq1, TRIM_READS.out.fq2, DIGEST_GENOME.out.genomeDigest, INDEX_GENOME.out.path genomeIndex1, INDEX_GENOME.out.path genomeIndex2, INDEX_GENOME.out.path genomeIndex3, INDEX_GENOME.out.path genomeIndex4, INDEX_GENOME.out.path genomeIndex5, INDEX_GENOME.out.path genomeIndex6)
+   HICUP_ALIGN(TRIM_READS.out.fq1, TRIM_READS.out.fq2, DIGEST_GENOME.out.genomeDigest, INDEX_GENOME.out.genomeIndex1, INDEX_GENOME.out.genomeIndex2, INDEX_GENOME.out.genomeIndex3, INDEX_GENOME.out.genomeIndex4, INDEX_GENOME.out.genomeIndex5, INDEX_GENOME.out.genomeIndex6)
    BAM_SORT(HICUP_ALIGN.out.bam)
    CREATE_HICFILE(BAM_SORT.out.bamSorted, hic_file_ch)
    MULTIQC(HICUP_ALIGN.out.bam)
